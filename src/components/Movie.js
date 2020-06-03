@@ -8,7 +8,6 @@ import { faHeart, faVideo, faStar } from '@fortawesome/free-solid-svg-icons'
 
 const Movie = (props) => {
 
-    const [likeMovie, setLikeMovie] = useState(false);
     const [watchMovie, setWatchMovie] = useState(false);
     const [countWatchMovie, setCountWatchMovie] = useState(0);
     const [myRatingMovie, setMyRatingMovie] = useState(0);
@@ -17,10 +16,14 @@ const Movie = (props) => {
     const [isRatingMovie, setIsRatingMovie] = useState(false);
 
     const handleLikeClick = () => {
-        setLikeMovie(!likeMovie);
+        if (props.movieLiked === false) {
+            props.handleClickAddMovie(props.movieName, props.movieImg);
+        } else {
+            props.handleClickDeleteMovie(props.movieName);
+        }
     }
     
-    if (likeMovie) {
+    if (props.movieLiked === true) {
         var likeColor = {color: '#e74c3c', cursor:"pointer"}
     } else {
         likeColor = {cursor:"pointer"}
