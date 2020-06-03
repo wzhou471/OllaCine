@@ -21,7 +21,7 @@ const App = () => {
 
   return (
     <div style={{backgroundColor:"#232528"}}>
-      <Container  >
+      <Container>
         <Row>
           <Nav>
             <NavItem>
