@@ -5,7 +5,7 @@ var movieModel = require('../models/movies')
 
 router.get('/new-movies', function(req, res, next) {
 
-  var data = request("GET", "https://api.themoviedb.org/3/discover/movie?api_key=d597c84dec0f7968fd9654a902650f5e&language=fr-FR&region=fr&sort_by=release_date.desc&include_adult=false&include_video=false&page=1");  
+  var data = request("GET", "https://api.themoviedb.org/3/discover/movie?api_key=d597c84dec0f7968fd9654a902650f5e&language=fr-FR&region=fr&sort_by=release_date.desc&include_adult=false&include_video=false&page=1&release_date.lte=2019-12-01&vote_count.gte=10&vote_average.gte=5");  
 
   data = JSON.parse(data.body);
 
@@ -43,7 +43,7 @@ router.delete('/whishlist-movie/:name', async function(req, res, next) {
   res.json({result});
 });
 
-router.get('/whishlist-movie', async function(req, res, next) {
+router.get('/wishlist-movie', async function(req, res, next) {
 
   var movies = await movieModel.find()
 
